@@ -27,6 +27,8 @@ dependencies {
     implementation(libs.bootstrap)
     implementation(libs.jackson.module.kotlin)
     testImplementation(libs.spring.boot.starter.test)
+    testImplementation("org.seleniumhq.selenium:selenium-java:4.17.0")
+    testImplementation("io.github.bonigarcia:webdrivermanager:5.5.3")
 }
 
 tasks.withType<Test> {
