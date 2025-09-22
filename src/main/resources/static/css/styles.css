@@ -53,8 +53,13 @@ body {
 .card-body {
     background-color: #ffffff;
     border-color: #3b3b3b;
+    color: #000000;
 }
 
+.footer {
+    background-color: #0d6efd;
+    color: #000000;
+}
 
 
 
@@ -66,7 +71,7 @@ body.dark-mode {
 
 
 body.dark-mode .navbar {
-    background-color: #3b3b3b;
+    background-color: #084095;
 }
 
 body.dark-mode .navbar .nav-link {
@@ -85,5 +90,44 @@ body.dark-mode #darkLightModeBtn {
 body.dark-mode .card-body {
     background-color: #3b3b3b;
     border-color: #f8f9fa;
+    color: #ffffff;
 }
 
+body.dark-mode .card-body .text-muted {
+    color: #f8f9fa !important;
+}
+
+body.dark-mode .form-control {
+    background-color: #3b3b3b;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+body.dark-mode .form-control::placeholder {
+    color: #a0a0a0;
+}
+
+body.dark-mode .request {
+    color: #000000 !important;
+}
+
+body.dark-mode .request .text-muted {
+    color: #000000 !important;
+}
+
+body.dark-mode .response {
+    color: #000000 !important;
+}
+
+body.dark-mode .response .text-muted {
+    color: #000000 !important;
+}
+
+body.dark-mode .response .text-success {
+    color: rgb(131, 194, 36) !important;
+}
+
+body.dark-mode .footer {
+    background-color: #084095;
+    color: #ffffff;
+}
