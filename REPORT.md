@@ -1,7 +1,10 @@
 # Lab 1 Git Race -- Project Report
 **Author:** Ariana Porroche Llorén (874055)
+
 **Date:** 24th September 2025
+
 **Course:** Web Engineering
+
 
 ## Description of Changes
 1. Dark/light mode toggle implementation (enhanced User Experience)
@@ -45,9 +48,11 @@
 - Assisted in understanding how to change a Bootstrap element class in HTML (body.classList) to apply custom colors
 - Assisted in writing the Selenium WebDriver test for the dark/light mode button, as Selenium was previously unfamiliar
 
+#### Percentage of AI-Assisted vs. Original work
 - Percentage of AI-assisted work: 40%
 - Percentage of original work: 60%
 
+#### Modifications made to AI-Generated code
 - AI-generated suggestions were adapted and modified:
     - Modified the proposed CSS classes to fit the existing design
     - Modified the generated documentation to accurately reflect the work done
@@ -57,6 +62,6 @@
 - Integration test to verify the presence of the dark/light mode button
 - CSS classes for dark and light modes
 - Part of the JavaScript code to handle the toggle functionality and store user preference
-
+#### Learning process
 - Learned how to effectively use AI tools to accelerate documentation and understand new technologies such as `Selenium WebDriver`
 - Learned to critically evaluate and adapt AI-generated content to fit project requirements and maintain code quality
