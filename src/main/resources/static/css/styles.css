@@ -1,9 +1,12 @@
 /* Universidad Zaragoza Logo Styles */
 .navbar-logo {
-    width: 50px !important;
-    height: 50px !important;
+    width: 6cqi !important;
+    height: 40px !important;
     max-width: none !important;
     max-height: none !important;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: #ffffff;
 }
 
 .main-logo {
@@ -11,7 +14,11 @@
     height: 50px !important;
     max-width: none !important;
     max-height: none !important;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #ffffff;
 }
+
 
 /* HTTP Debug Section Styles */
 .http-debug-request {
@@ -27,66 +34,61 @@
 }
 
 
-/* Light Mode colors */
+/* 1. Body colors */
+/* 1.1. Light mode */
 body {
     background-color: #f8f9fa;
     color: #212529;
 }
 
-.navbar {
-    background-color: #0d6efd;
-}
-
-.navbar .nav-brand {
-    color: #000000;
-}
-
-.navbar .nav-link {
-    color: #000000;
-}
-
-#darkLightModeBtn {
-    border-color: #000000;
-    color: #000000;
-}
-
-.card-body {
-    background-color: #ffffff;
-    border-color: #3b3b3b;
-    color: #000000;
-}
-
-.footer {
-    background-color: #0d6efd;
-    color: #000000;
-}
-
-
-
-/* Dark Mode colors */
+/* 1.2. Dark mode */
 body.dark-mode {
     background-color: #000000;
     color: #ffffff;
 }
 
 
+/* 2. Navbar colors */
+/* 2.1. Light mode */
+.navbar {
+    background-color: #0d6efd;
+}
+.navbar .navbar-brand {
+    color: #ffffff;
+}
+.navbar .nav-link {
+    color: #ffffff;
+}
+#darkLightModeBtn {
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+/* 2.2. Dark mode */
 body.dark-mode .navbar {
     background-color: #084095;
 }
-
 body.dark-mode .navbar .nav-link {
     color: #ffffff;
 }
-
 body.dark-mode .navbar .navbar-brand {
     color: #ffffff;
 }
-
 body.dark-mode #darkLightModeBtn {
     border-color: #ffffff;
     color: #ffffff;
 }
 
+
+/* 3. Card colors */
+/* 3.1. Light mode */
+.card-body {
+    background-color: #ffffff;
+    border-color: #3b3b3b;
+    color: #000000;
+}
+
+/* 3.2. Dark mode */
 body.dark-mode .card-body {
     background-color: #3b3b3b;
     border-color: #f8f9fa;
@@ -95,6 +97,10 @@ body.dark-mode .card-body {
 
 body.dark-mode .card-body .text-muted {
     color: #f8f9fa !important;
+}
+
+body.dark-mode .main-card-title {
+    color: #3b3b3b;
 }
 
 body.dark-mode .form-control {
@@ -127,6 +133,15 @@ body.dark-mode .response .text-success {
     color: rgb(131, 194, 36) !important;
 }
 
+
+/* 4. Footer colors */
+/* 4.1. Light mode */
+.footer {
+    background-color: #0d6efd;
+    color: #000000;
+}
+
+/* 4.2. Dark mode */
 body.dark-mode .footer {
     background-color: #084095;
     color: #ffffff;
