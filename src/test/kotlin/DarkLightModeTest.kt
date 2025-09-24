@@ -19,7 +19,7 @@ import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
 
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_aPORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class DarkLightModeSeleniumTest {
 
     @LocalServerPort
