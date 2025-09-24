@@ -76,4 +76,12 @@ class IntegrationTest {
         assertThat(response.body).contains("Health Check")
         assertThat(response.body).contains("Learning Notes:")
     }
+
+    @Test
+    fun `should return home page with dark light mode button`() {
+        val response = restTemplate.getForEntity("http://localhost:$port", String::class.java)
+        
+        assertThat(response.statusCode).isEqualTo(HttpStatus.OK)
+        assertThat(response.body).contains("""id="darkLightModeBtn"""")
+    }
 }

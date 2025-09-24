@@ -19,25 +19,6 @@ import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
 
 
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-class DarkLightModeButtonTest {
-    @LocalServerPort
-    private var port: Int = 0
-
-    @Autowired
-    private lateinit var restTemplate: TestRestTemplate
-
-    @Test
-    fun `home page contains dark light mode button`() {
-        val response = restTemplate.getForEntity("http://localhost:$port", String::class.java)
-        
-        assertThat(response.statusCode).isEqualTo(HttpStatus.OK)
-        
-        assertThat(response.body).contains("""id="darkLightModeBtn"""")
-    }
-}
-
-
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class DarkLightModeSeleniumTest {
 
@@ -63,7 +44,7 @@ class DarkLightModeSeleniumTest {
     }
 
     @Test
-    fun `dark mode button toggles body class and icon`() {
+    fun `should update body class and button icon when dark/light mode button is toggled`() {
         val body = driver.findElement(By.tagName("body"))
         val btn = driver.findElement(By.id("darkLightModeBtn"))
         val icon = driver.findElement(By.id("modeIcon"))
