@@ -19,7 +19,7 @@ import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
 
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_aPORT)
 class DarkLightModeSeleniumTest {
 
     @LocalServerPort
@@ -44,7 +44,7 @@ class DarkLightModeSeleniumTest {
     }
 
     @Test
-    fun `should update body class and button icon when dark/light mode button is toggled`() {
+    fun `should update body class and button icon when dark light mode button is toggled`() {
         val body = driver.findElement(By.tagName("body"))
         val btn = driver.findElement(By.id("darkLightModeBtn"))
         val icon = driver.findElement(By.id("modeIcon"))
