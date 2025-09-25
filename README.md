@@ -6,6 +6,7 @@ A modern Spring Boot application built with Kotlin, featuring a responsive web i
 
 - **Modern Tech Stack**: Spring Boot 3.5.3, Kotlin 2.2.10, Java 21 LTS
 - **Responsive UI**: Bootstrap 5.3.3 with modern design
+- **Dark Light Mode**: Responsive design with dark/light mode support
 - **REST API**: JSON endpoints with timestamp support
 - **Health Monitoring**: Spring Boot Actuator for application health
 - **Live Development**: Spring Boot DevTools for automatic reload
@@ -21,7 +22,7 @@ A modern Spring Boot application built with Kotlin, featuring a responsive web i
 - **Java Version**: 21 LTS
 - **Frontend**: Bootstrap 5.3.3, Thymeleaf
 - **Build Tool**: Gradle 9.0.0
-- **Testing**: JUnit 5, AssertJ, MockMvc
+- **Testing**: JUnit 5, AssertJ, MockMvc, Selenium
 - **Containerization**: Docker
 
 ## 📋 Prerequisites
@@ -85,6 +86,7 @@ Run specific test classes:
 ```bash
 ./gradlew test --tests "HelloControllerUnitTests"
 ./gradlew test --tests "IntegrationTest"
+./gradlew test --tests "DarkLightModeSeleniumTest"
 ```
 
 ## 📡 API Endpoints
@@ -120,16 +122,23 @@ src/
 │   └── resources/
 │       ├── application.properties      # Application configuration
 │       ├── templates/
-│       │   └── welcome.html           # Thymeleaf template
-│       └── public/
-│           └── assets/
-│               └── logo.svg           # Application logo
+│       │   └── welcome.html            # Thymeleaf template
+│       │ public/
+│       │   └── assets/
+│       │       └── logo.svg            # Application logo
+│       └── static/
+│           │── css/
+│           │   └── styles.css          # Global application styles
+│           └── js/
+│               └── dark-light-mode.js  # Script to toggle dark/light mode
+│               └── http-debug.js       # Script for testing HTTP requests and responses
 └── test/
     └── kotlin/
         ├── controller/
         │   ├── HelloControllerUnitTests.kt    # Unit tests
         │   └── HelloControllerMVCTests.kt     # MVC tests
-        └── IntegrationTest.kt                 # Integration tests
+        │   IntegrationTest.kt                 # Integration tests
+        └── DarkLightModeTest.kt               # UI acceptance tests
 ```
 
 ## ⚙️ Configuration
@@ -208,3 +217,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - ✅ Fixed Bootstrap version inconsistencies
 - ✅ Enhanced error handling and validation
 - ✅ Added interactive features and API endpoints
+- ✅ Implemented Dark/Light mode toggle with persistent user preference
+- ✅ Added automated UI acceptance tests
