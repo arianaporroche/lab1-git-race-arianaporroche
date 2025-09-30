@@ -9,8 +9,6 @@ import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.Network;
 import org.testcontainers.containers.wait.strategy.HttpWaitStrategy;
 import org.testcontainers.utility.DockerImageName;
-import org.junit.jupiter.api.AfterAll;
-
 import java.time.Duration;
 
 import static org.assertj.core.api.Assertions.assertThat;
