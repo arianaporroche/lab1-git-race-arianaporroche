@@ -7,20 +7,25 @@ import org.testcontainers.containers.BrowserWebDriverContainer;
 
 public class EdgeWebDriverContainerTest extends BaseWebDriverContainerTest {
 
+    private EdgeOptions edgeOptions = new EdgeOptions()
+            .addArguments("--headless")
+            .addArguments("--no-sandbox")
+            .addArguments("--disable-dev-shm-usage");
+
     // junitRule {
     public BrowserWebDriverContainer<?> edge = new BrowserWebDriverContainer<>()
-        .withCapabilities(new EdgeOptions())
+        .withCapabilities(edgeOptions)
         // }
         .withNetwork(NETWORK);
 
     @BeforeEach
     public void checkBrowserIsIndeedMSEdge() {
         edge.start();
-        assertBrowserNameIs(edge, "MicrosoftEdge", new EdgeOptions());
+        assertBrowserNameIs(edge, "MicrosoftEdge", edgeOptions);
     }
 
     @Test
     public void simpleExploreTest() {
-        doSimpleExplore(edge, new EdgeOptions());
+        doSimpleExplore(edge, edgeOptions);
     }
 }
