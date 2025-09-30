@@ -27,8 +27,13 @@ dependencies {
     implementation(libs.bootstrap)
     implementation(libs.jackson.module.kotlin)
     testImplementation(libs.spring.boot.starter.test)
-    testImplementation("org.seleniumhq.selenium:selenium-java:4.17.0")
+    // testImplementation("org.seleniumhq.selenium:selenium-java:4.17.0")
     testImplementation("io.github.bonigarcia:webdrivermanager:5.5.3")
+    // NEW DEPENDENCIES FOR testcontainers
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.testcontainers:testcontainers:1.19.0")
+    testImplementation("org.testcontainers:selenium:1.19.0")
+    testImplementation("org.seleniumhq.selenium:selenium-java:4.14.0")
 }
 
 tasks.withType<Test> {
