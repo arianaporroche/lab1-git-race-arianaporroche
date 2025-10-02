@@ -20,4 +20,3 @@ spring-boot-devtools = { module = "org.springframework.boot:spring-boot-devtools
 spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test" }
 bootstrap = { module = "org.webjars:bootstrap", version.ref = "bootstrap" }
 jackson-module-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
-
