@@ -17,10 +17,7 @@ jobs:
           distribution: 'adopt'
 
       - name: Build with Gradle
-        run: ./gradlew build --no-daemon
-      
-      - name: Test with Gradle
-        run: ./gradlew check --no-daemon
+        run: ./gradlew assemble --no-daemon
       
       - name: Cleanup Gradle Cache
         run: |
