@@ -87,6 +87,9 @@ Run specific test classes:
 ./gradlew test --tests "HelloControllerUnitTests"
 ./gradlew test --tests "IntegrationTest"
 ./gradlew test --tests "DarkLightModeSeleniumTest"
+# ./gradlew test --tests "es.unizar.webeng.hello.ChromeWebDriverContainerTest"
+# ./gradlew test --tests "es.unizar.webeng.hello.FirefoxWebDriverContainerTest"
+# ./gradlew test --tests "es.unizar.webeng.hello.EdgeWebDriverContainerTest"
 ```
 
 ## 📡 API Endpoints

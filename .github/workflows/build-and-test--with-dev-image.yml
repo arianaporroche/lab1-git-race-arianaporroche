@@ -1,0 +1,58 @@
+name: CI - Gradle Build and Test with Docker
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      TESTCONTAINER_DOCKER_NETWORK: modern-web-app-test-network
+
+    steps:
+      # 1️⃣ Checkout repo
+      - uses: actions/checkout@v4
+
+      # 2️⃣ Set up JDK 21
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      # 3️⃣ Build Docker image for development
+      - name: Build development Docker image
+        run: docker build -f Dockerfile.dev -t modern-web-app-dev .
+
+      # 4️⃣ Create Docker network for Testcontainers
+      - name: Create Docker network
+        run: docker network create ${{ env.TESTCONTAINER_DOCKER_NETWORK }} || true
+
+      # 5️⃣ Start the development container
+      - name: Run development container
+        run: |
+          docker run -d \
+            --name modern-web-app-dev \
+            --network ${{ env.TESTCONTAINER_DOCKER_NETWORK }} \
+            -p 8080:8080 \
+            -p 35729:35729 \
+            modern-web-app-dev
+
+      - name: Wait for app to start
+        run: sleep 60
+
+      # 7️⃣ Run Gradle build with tests
+      - name: Build and run tests
+        run: ./gradlew clean build --no-daemon
+
+      # 8️⃣ Cleanup Docker container and network
+      - name: Stop development container
+        run: docker rm -f modern-web-app-dev
+
+      - name: Remove Docker network
+        run: docker network rm ${{ env.TESTCONTAINER_DOCKER_NETWORK }}
