@@ -15,25 +15,29 @@ jobs:
       TESTCONTAINER_DOCKER_NETWORK: modern-web-app-test-network
 
     steps:
-      # 1️⃣ Checkout repo
+      # Checkout repo
       - uses: actions/checkout@v4
 
-      # 2️⃣ Set up JDK 21
+      # Set up JDK 21
       - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
           java-version: '21'
           distribution: 'temurin'
 
-      # 3️⃣ Build Docker image for development
+      # Build Docker image for development
       - name: Build development Docker image
         run: docker build -f Dockerfile.dev -t modern-web-app-dev .
 
-      # 4️⃣ Create Docker network for Testcontainers
+      # Create Docker network for Testcontainers
       - name: Create Docker network
         run: docker network create ${{ env.TESTCONTAINER_DOCKER_NETWORK }} || true
 
-      # 5️⃣ Start the development container
+      # Pre-pull Chrome image for Testcontainers
+      - name: Pre-pull Selenium Chrome image
+        run: docker pull selenium/standalone-chrome:115.0
+
+      # Start the development container
       - name: Run development container
         run: |
           docker run -d \
@@ -44,13 +48,13 @@ jobs:
             modern-web-app-dev
 
       - name: Wait for app to start
-        run: sleep 60
+        run: sleep 20
 
-      # 7️⃣ Run Gradle build with tests
+      # Run Gradle build with tests
       - name: Build and run tests
         run: ./gradlew clean build --no-daemon
 
-      # 8️⃣ Cleanup Docker container and network
+      # Cleanup Docker container and network
       - name: Stop development container
         run: docker rm -f modern-web-app-dev
 
