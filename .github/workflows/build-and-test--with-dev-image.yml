@@ -61,6 +61,12 @@ jobs:
       - name: Build and run tests
         run: ./gradlew clean build --no-daemon
 
+      - name: Upload test report
+        uses: actions/upload-artifact@v3
+        with:
+          name: gradle-test-report
+          path: build/reports/tests/test
+
       # Cleanup Docker container and network
       - name: Stop development container
         run: docker rm -f modern-web-app-dev
