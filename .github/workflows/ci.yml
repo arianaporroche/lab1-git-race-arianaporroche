@@ -20,7 +20,7 @@ jobs:
           distribution: 'adopt'
 
       - name: Build Docker image for tests
-        run: docker compose -f docker-compose.dev.yml up --build -d
+        run: docker compose -f docker-compose.dev.yml -f docker-compose.override.yml up --build -d
 
       - name: Fix file permissions
         run: sudo chown -R $USER:$USER .
