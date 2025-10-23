@@ -29,20 +29,27 @@ jobs:
       - name: Build development Docker image
         run: docker build -f Dockerfile.dev -t modern-web-app-dev .
 
-      # Create Docker network for Testcontainers
-      - name: Create Docker network
-        run: docker network create ${{ env.TESTCONTAINER_DOCKER_NETWORK }} || true
+      # # Create Docker network for Testcontainers
+      # - name: Create Docker network
+      #   run: docker network create ${{ env.TESTCONTAINER_DOCKER_NETWORK }} || true
 
       # Pre-pull Chrome image for Testcontainers
       - name: Pre-pull Selenium Chrome image
         run: docker pull selenium/standalone-chrome:115.0
 
       # Start the development container
+      # - name: Run development container
+      #   run: |
+      #     docker run -d \
+      #       --name modern-web-app-dev \
+      #       --network ${{ env.TESTCONTAINER_DOCKER_NETWORK }} \
+      #       -p 8080:8080 \
+      #       -p 35729:35729 \
+      #       modern-web-app-dev
       - name: Run development container
         run: |
           docker run -d \
             --name modern-web-app-dev \
-            --network ${{ env.TESTCONTAINER_DOCKER_NETWORK }} \
             -p 8080:8080 \
             -p 35729:35729 \
             modern-web-app-dev
@@ -58,5 +65,5 @@ jobs:
       - name: Stop development container
         run: docker rm -f modern-web-app-dev
 
-      - name: Remove Docker network
-        run: docker network rm ${{ env.TESTCONTAINER_DOCKER_NETWORK }}
+      # - name: Remove Docker network
+      #   run: docker network rm ${{ env.TESTCONTAINER_DOCKER_NETWORK }}

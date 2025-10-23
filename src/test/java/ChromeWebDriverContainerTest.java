@@ -5,21 +5,22 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testcontainers.containers.BrowserWebDriverContainer;
-
+import org.testcontainers.containers.GenericContainer;
+import org.testcontainers.containers.Network;
+import org.testcontainers.containers.wait.strategy.HttpWaitStrategy;
+import org.testcontainers.utility.DockerImageName;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testcontainers.containers.GenericContainer;
-import org.testcontainers.utility.DockerImageName;
-import org.testcontainers.containers.wait.strategy.HttpWaitStrategy;
 import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-
-
 public class ChromeWebDriverContainerTest extends BaseWebDriverContainerTest {
+
+    // Red interna compartida para los contenedores
+    public static Network NETWORK = Network.newNetwork();
 
     // 1️. Configuración de Chrome
     private ChromeOptions chromeOptions = new ChromeOptions()
@@ -33,12 +34,16 @@ public class ChromeWebDriverContainerTest extends BaseWebDriverContainerTest {
             .withExposedPorts(8080)
             .withNetwork(NETWORK)
             .withNetworkAliases("app")
-            .waitingFor(new HttpWaitStrategy().forPort(8080).forStatusCode(200).withStartupTimeout(Duration.ofSeconds(60)));
+            .waitingFor(new HttpWaitStrategy()
+                    .forPort(8080)
+                    .forStatusCode(200)
+                    .withStartupTimeout(Duration.ofSeconds(60)));
 
     // 3. Contenedor de Chrome
-    public BrowserWebDriverContainer<?> chrome = new BrowserWebDriverContainer<>()
-        .withCapabilities(chromeOptions)
-        .withNetwork(NETWORK);
+    public BrowserWebDriverContainer<?> chrome = new BrowserWebDriverContainer<>(
+            DockerImageName.parse("selenium/standalone-chrome:115.0"))
+            .withCapabilities(chromeOptions)
+            .withNetwork(NETWORK);
 
     // 4️. Arrancar contenedores antes de cada test
     @BeforeEach
