@@ -16,6 +16,9 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
 
+      - name: Build Docker image for tests
+        run: docker compose -f docker-compose.dev.yml up --build -d
+
       - name: Build with Gradle
         run: ./gradlew build --no-daemon
       
